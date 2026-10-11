@@ -26,9 +26,11 @@ const Home = () => {
     const fetchFeatured = async () => {
       try {
         const res = await client.get('/jobs');
-        setFeaturedJobs(res.data.slice(0, 4));
+        const jobsList = Array.isArray(res.data) ? res.data : (res.data?.content || []);
+        setFeaturedJobs(jobsList.slice(0, 4));
       } catch (err) {
         console.error('Failed to fetch jobs:', err);
+        setFeaturedJobs([]);
       } finally {
         setLoading(false);
       }

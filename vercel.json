@@ -3,6 +3,10 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/api/:match*",
+      "destination": "https://talentpulse-ai-backend.onrender.com/api/:match*"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
